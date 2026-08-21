@@ -6,8 +6,7 @@ Cloud-native event booking platform frontend - deployed on Google Cloud Run.
 
 - **Student Name:** [Your Name]
 - **Student ID:** [Your ID]
-- **GCP Project ID:** eventsphere-504909
-- **Deployed URL:** https://eventsphere-frontend-XXX.a.run.app _(set after deployment)_
+
 
 ## Technology Stack
 
