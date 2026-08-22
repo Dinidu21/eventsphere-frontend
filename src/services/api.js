@@ -25,7 +25,7 @@ apiClient.interceptors.response.use(
 // User Service APIs
 export const registerUser = async (userData) => {
   try {
-    const response = await apiClient.post('/users/register', userData);
+    const response = await apiClient.post('/api/users/register', userData);
     return response.data;
   } catch (error) {
     throw new Error(`User registration failed: ${error.message}`);
