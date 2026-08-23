@@ -1,16 +1,16 @@
 import React from 'react';
 import { Button } from './ui/button';
 import { Avatar, AvatarFallback } from './ui/avatar';
-import { Calendar, LogOut, User } from 'lucide-react';
+import { Calendar, LogOut } from 'lucide-react';
 
 function Header({ currentUser, onLogout }) {
-  const getInitials = (name) => {
-    return name
-      .split(' ')
-      .map(word => word[0])
+  const getInitials = (email) => {
+    return email
+      .split('@')[0]
+      .split('')
+      .slice(0, 2)
       .join('')
-      .toUpperCase()
-      .slice(0, 2);
+      .toUpperCase();
   };
 
   return (
@@ -29,29 +29,25 @@ function Header({ currentUser, onLogout }) {
               <div className="flex items-center gap-3">
                 <Avatar>
                   <AvatarFallback className="bg-primary/10 text-primary">
-                    {getInitials(currentUser.name)}
+                    {getInitials(currentUser.email)}
                   </AvatarFallback>
                 </Avatar>
-                <span className="text-sm font-medium hidden sm:inline">
-                  {currentUser.name}
-                </span>
+                <div className="hidden sm:block">
+                  <p className="text-sm font-medium">{currentUser.email}</p>
+                  <p className="text-xs text-muted-foreground capitalize">{currentUser.role?.toLowerCase()}</p>
+                </div>
               </div>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={onLogout}
-                className="text-muted-foreground"
+                className="text-muted-foreground hover:text-foreground"
               >
                 <LogOut className="h-4 w-4 mr-2" />
                 <span className="hidden sm:inline">Logout</span>
               </Button>
             </>
-          ) : (
-            <Button variant="outline" size="sm">
-              <User className="h-4 w-4 mr-2" />
-              Sign In
-            </Button>
-          )}
+          ) : null}
         </div>
       </div>
     </header>
