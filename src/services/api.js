@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Use environment variable or default to localhost for dev
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://136.68.42.194';
 
 console.log(`API Base URL: ${API_BASE_URL}`);
 
