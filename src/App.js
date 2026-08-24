@@ -229,7 +229,7 @@ function RegisterSection({ onRegister }) {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-    role: 'USER',
+    role: 'ATTENDEE',
   });
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
@@ -302,8 +302,8 @@ function RegisterSection({ onRegister }) {
               onChange={handleChange}
               className="w-full px-3 py-2 border border-input rounded-md"
             >
-              <option value="USER">User (Attendee)</option>
-              <option value="ADMIN">Admin (Event Organizer)</option>
+              <option value="ATTENDEE">Attendee (Event Goer)</option>
+              <option value="ORGANIZER">Organizer (Event Creator)</option>
             </select>
           </div>
         </CardContent>
