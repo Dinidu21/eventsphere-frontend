@@ -1,68 +1,96 @@
 # EventSphere Frontend
 
-Cloud-native event booking platform frontend - deployed on Google Cloud Run.
+Cloud-native event booking platform frontend deployed on **Google Cloud Run (Serverless)**.
 
-## Project Info
+## Student Info
 
-- **Student Name:** [Dinidu Sachintha]
-- **Batch:** [Batch 71]
+- **Student Name:** Dinidu Sachintha
+- **Batch:** Batch 71
 
+## Tech Stack
 
-## Technology Stack
-
-- **Frontend Framework:** React 18.2
-- **HTTP Client:** Axios
-- **Styling:** CSS3 (no framework, vanilla CSS)
-- **Runtime:** Node.js 20 on Alpine Linux
-- **Deployment:** Google Cloud Run (serverless)
-- **Container:** Docker
+- **Framework:** React 18.3.1
+- **Build Tool:** Create React App (react-scripts 5.0.1)
+- **Styling:** Tailwind CSS 3.4 + shadcn/ui primitives
+- **HTTP Client:** Axios 1.19
+- **Routing:** React Router DOM 6.30
+- **Icons:** Lucide React 1.33
+- **Runtime:** Node.js 20 (Alpine Linux)
+- **Deployment:** Google Cloud Run (fully managed, serverless)
+- **Containerization:** Docker
 
 ## Features
 
-- User registration and authentication
-- Browse events by venue
-- Book tickets for events
-- Submit reviews for attended events
+- User registration and JWT-based authentication
+- Browse events by venue with responsive UI
+- Book tickets for available events
+- Submit reviews and ratings for attended events
 - Real-time synchronization with backend microservices
+- Responsive design with Tailwind CSS and Radix UI primitives
 
-## Setup & Local Development
+## Local Development
 
 ### Prerequisites
 
-- Node.js 18+ installed
-- npm or yarn package manager
-- GCP project with Cloud Run enabled
+- Node.js 18+ (recommended: Node.js 20 LTS)
+- npm 9+
+- GCP project with Cloud Run enabled (for deployment)
 
 ### Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/[your-username]/eventsphere-frontend.git
-cd eventsphere-frontend
-
 # Install dependencies
 npm install
 
-# Create .env file
-cp .env.example .env
+# Start development server
+npm start
 
-# For local dev (assumes backend running on localhost:8080):
-npm run dev
-
-# For production build:
+# Production build
 npm run build
+
+# Run test suite
+npm test
 ```
 
-## Architecture
+### Environment Variables
 
-Frontend → (HTTPS) → External Load Balancer → API Gateway (Spring Cloud Gateway) → Microservices → Databases
+Create a `.env` file in the root directory:
+
+```env
+REACT_APP_API_BASE_URL=<your-backend-api-url>
+```
+
+## Deployment
+
+The application is containerized and deployed to **Google Cloud Run**.
+
+- **Live URL:** https://eventsphere-frontend-149096254626.asia-south1.run.app
+
+### Architecture
+
+```
+Frontend (Cloud Run)
+    ↓ HTTPS
+External Load Balancer
+    ↓
+API Gateway (Spring Cloud Gateway)
+    ↓
+Microservices → Databases
+```
+
+## Testing
+
+1. Open the live URL: https://eventsphere-frontend-149096254626.asia-south1.run.app
+2. Register a new user
+3. Browse available events by venue
+4. Book tickets
+5. Submit reviews for attended events
 
 ## API Integration
 
-The frontend uses `src/services/api.js` to call the backend:
+The frontend uses a centralized API client located in `src/services/api.js`:
 
 ```javascript
-// Example: Register a user
 import { registerUser } from "./services/api";
 
 const user = await registerUser({
@@ -71,11 +99,3 @@ const user = await registerUser({
   phone: "555-1234",
 });
 ```
-
-### Browser Testing
-
-1. Open `https://eventsphere-frontend-149096254626.asia-south1.run.app`
-2. Register a user
-3. Browse available events
-4. Book tickets
-5. Submit a review
