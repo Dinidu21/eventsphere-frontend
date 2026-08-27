@@ -563,10 +563,9 @@ export const createReview = async (eventId, userId, rating, text, files = null) 
         formData.append('files', file);
       });
       
-      const response = await axios.post(
-        `${API_BASE_URL}/api/reviews`,
+      const response = await apiClient.post(
+        '/api/reviews',
         formData
-        // NO config object with Content-Type
       );
       return response.data;
     } else {
