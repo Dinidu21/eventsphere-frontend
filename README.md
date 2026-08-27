@@ -2,10 +2,12 @@
 
 Cloud-native event booking platform frontend deployed on **Google Cloud Run (Serverless)**.
 
-## Student Info
+## Student Information
 
 - **Student Name:** Dinidu Sachintha
-- **Batch:** Batch 71
+- **Student Number:** 241711028
+- **Slack Handle:** [U0BF767MA4S](https://ijse-eca-hdse-71-72.slack.com/team/U0BF767MA4S)
+- **GCP Project ID:** eventsphere-504909
 
 ## Tech Stack
 
