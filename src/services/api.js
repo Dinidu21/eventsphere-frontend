@@ -547,7 +547,6 @@ export const deleteBooking = async (bookingId) => {
  */
 export const createReview = async (eventId, userId, rating, text, files = null) => {
   try {
-    // If files are provided, use multipart/form-data
     if (files && files.length > 0) {
       const formData = new FormData();
       
@@ -564,14 +563,11 @@ export const createReview = async (eventId, userId, rating, text, files = null) 
         formData.append('files', file);
       });
       
-      // Create temporary config without JSON content-type
-      const config = {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      };
-      
-      const response = await apiClient.post('/api/reviews', formData, config);
+      const response = await axios.post(
+        `${API_BASE_URL}/api/reviews`,
+        formData
+        // NO config object with Content-Type
+      );
       return response.data;
     } else {
       // No files, use regular JSON
@@ -590,8 +586,7 @@ export const createReview = async (eventId, userId, rating, text, files = null) 
     );
   }
 };
-
-/**
+/** 
  * Get all reviews
  * @returns {Promise} List of reviews
  */
